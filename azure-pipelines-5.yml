@@ -8,9 +8,10 @@ trigger:
 
 variables:
   resourceGroupName: 'demoforpcs'
-  location: 'eastUS'
+  location: 'westeurope'
+  webAppName: 'bicep0017'
   templateFile: 'main.bicep'
-  webAppname: 'bicepscript'
+
 pool:
   vmImage: ubuntu-latest
 
@@ -23,28 +24,19 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az --version
-      az group create --name
-      $(resourceGroupName) --location $(location)
+      az group create --name $(resourceGroupName) --location $(location)
       az deployment group what-if --resource-group $(resourceGroupName) \
-      --template-file $(templateFile) \
-      --parameters webAppName=$(webAppName)
+         --template-file $(templateFile) \
+         --parameters webAppName=$(webAppName)
 
 - task: AzureCLI@2
-  displayName: Deploy Bicep to Azure
+  displayName: Deploy Bicep To Azure
   inputs:
     azureSubscription: 'Azure Service Connection'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az --version
       az deployment group create --resource-group $(resourceGroupName) \
-      --template-file $(templateFile) \
-      --parameters webAppName=$(webAppName)
+         --template-file $(templateFile) \
+         --parameters webAppName=$(webAppName)
 
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
