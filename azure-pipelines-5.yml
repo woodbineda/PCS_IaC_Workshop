@@ -9,7 +9,6 @@ trigger:
 variables:
   resourceGroupName: 'demoforpcs'
   location: 'westeurope'
-  webAppName: 'bicep0017'
   templateFile: 'main.bicep'
 
 pool:
@@ -27,7 +26,6 @@ steps:
       az group create --name $(resourceGroupName) --location $(location)
       az deployment group what-if --resource-group $(resourceGroupName) \
          --template-file $(templateFile) \
-         --parameters webAppName=$(webAppName)
 
 - task: AzureCLI@2
   displayName: Deploy Bicep To Azure
@@ -38,5 +36,4 @@ steps:
     inlineScript: |
       az deployment group create --resource-group $(resourceGroupName) \
          --template-file $(templateFile) \
-         --parameters webAppName=$(webAppName)
 
