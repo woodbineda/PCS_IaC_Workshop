@@ -21,5 +21,5 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az --version
-      az group delete --name $(resourceGroupName) --location $(location)
+      az group delete --name $(resourceGroupName)
 
