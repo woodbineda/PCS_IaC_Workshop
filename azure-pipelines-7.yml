@@ -8,6 +8,7 @@ trigger:
 
 variables:
   resourceGroupName: 'demoforpcs'
+  var_azuresubscription : 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
 
 pool:
   vmImage: ubuntu-latest
@@ -16,10 +17,10 @@ steps:
 - task: AzureCLI@2
   displayName: 'Delete all resources for the Demo Resource group'
   inputs:
-    azureSubscription: 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
+    azureSubscription: var_azuresubscription
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: |
+    inlineScript: 
       az --version
       az group delete --name $(resourceGroupName) --yes
 
