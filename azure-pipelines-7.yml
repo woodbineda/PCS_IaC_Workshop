@@ -17,7 +17,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Delete all resources for the Demo Resource group'
   inputs:
-    azureSubscription: var_azuresubscription
+    azureSubscription: $(var_azuresubscription)
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 
