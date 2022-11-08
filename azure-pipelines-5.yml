@@ -8,7 +8,7 @@ trigger:
 
 variables:
   resourceGroupName: 'demoforpcs'
-  location: 'westeurope'
+  location: 'eastUS'
   templateFile: 'main.bicep'
 
 pool:
