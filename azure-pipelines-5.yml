@@ -10,6 +10,7 @@ variables:
   resourceGroupName: 'demoforpcs'
   location: 'eastUS'
   templateFile: 'main.bicep'
+  varazureSubscription : 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
 
 pool:
   vmImage: ubuntu-latest
@@ -19,7 +20,7 @@ steps:
 - task: AzureCLI@2
   displayName: Preview Bicep Changes
   inputs:
-    azureSubscription: 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
+    azureSubscription: varazureSubscription
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
@@ -31,7 +32,7 @@ steps:
 - task: AzureCLI@2
   displayName: Deploy Bicep To Azure
   inputs:
-    azureSubscription: 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
+    azureSubscription: varazureSubscription
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
