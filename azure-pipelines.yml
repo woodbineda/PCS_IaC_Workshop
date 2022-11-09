@@ -13,7 +13,7 @@ steps:
     inputs:
       azureSubscription: 'PCSDSM (6270c2d6-d30a-41ec-8edb-519b950de71b)'
       AuthenticationType: 'server'
-      ServerName: 'demoforpcs'
+      ServerName: 'demoforpcs.database.windows.net'
       DatabaseName: 'MyDemo'
       SqlUsername: 'server_admin'
       SqlPassword: 'P@ssw0rd1!'
