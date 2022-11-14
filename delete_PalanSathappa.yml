@@ -20,5 +20,4 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 
-      az --version
       az group delete --name $(resourceGroupName) --yes
