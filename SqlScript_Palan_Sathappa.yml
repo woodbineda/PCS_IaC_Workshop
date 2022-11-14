@@ -5,11 +5,11 @@ trigger:
 - none
 
 variables:
-  serverName: 'demoforpcs.database.windows.net'
+  serverName: 'azpipedbdemosvr.database.windows.net'
   varazuresubscription : 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
-  databaseName: 'MyDemo'
-  SqlUsername: 'server_admin'
-  SqlPassword: 'P@ssw0rd1!'
+  databaseName: 'azpipedbdemo'
+  SqlUsername: 'pcsadmin'
+  SqlPassword: 'passwd01'
   SqlFile: 'PCS_Workshop.sql'
 
 pool:
