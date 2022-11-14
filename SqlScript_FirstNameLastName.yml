@@ -7,7 +7,7 @@ trigger:
 variables:
   serverName: 'azpipedbdemosvr.database.windows.net'
   varazuresubscription : 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
-  databaseName: 'azpipedbdmo'
+  databaseName: 'azpipedbdemo'
   SqlUsername: 'pcsadmin'
   SqlPassword: 'fX^%a^074Qua'
   SqlFile: 'PCS_Workshop.sql'
