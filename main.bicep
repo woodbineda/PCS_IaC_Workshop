@@ -2,7 +2,7 @@ param serverName string = 'azpipedbdemosvr'
 param sqlDBName string = 'azpipedbdemo'
 param location string = 'eastus'
 param administratorLogin string = 'pcsadmin'
-param adminpwd string = 'passwd01'
+param administratorLoginPassword string = 'passwd01'
 
 @secure()
 param administratorLoginPassword string
