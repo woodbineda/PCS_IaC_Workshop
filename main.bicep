@@ -1,24 +1,28 @@
-resource sqlServer 'Microsoft.Sql/servers@2022-05-01-preview' = {
-  name: 'demoforpcs'
-  location: resourceGroup().location
-  properties: {
-    administratorLogin: 'server_admin'
-    administratorLoginPassword: 'P@ssw0rd1!'
-  }
 
-resource db 'databases@2022-05-01-preview' = {
-  name: 'MyDemo'
-  location: resourceGroup().location
-  properties: {
-    collation: 'SQL_Latin1_General_CP1_CI_AS'
-  }
- }
- resource fwRule 'firewallRules@2022-05-01-preview' = {
-   name: 'AllowAllWindowsAzureIps' 
-   properties: {
+param serverName string = 'azpipedbdemosvr'
+param sqlDBName string = 'azpipedbdemo'
+param location string = 'eastus'
+param administratorLogin string = 'pcsadmin'
+param adminpwd string = '<add password here>'
 
-    startIpAddress:'0.0.0.0'
-    endIpAddress:'0.0.0.0'
-   }
- }
+@secure()
+param administratorLoginPassword string
+
+resource sqlServer 'Microsoft.Sql/servers@2021-08-01-preview' = {
+  name: serverName
+  location: location
+  properties: {
+    administratorLogin: administratorLogin
+    administratorLoginPassword: adminpwd
+  }
+}
+
+resource sqlDB 'Microsoft.Sql/servers/databases@2021-08-01-preview' = {
+  parent: sqlServer
+  name: sqlDBName
+  location: location
+  sku: {
+    name: 'Standard'
+    tier: 'Standard'
+  }
 }
