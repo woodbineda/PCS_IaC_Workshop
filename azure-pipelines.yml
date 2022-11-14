@@ -2,7 +2,15 @@
 
 
 trigger:
-- main
+- none
+
+variables:
+  serverName: 'demoforpcs.database.windows.net'
+  varazuresubscription : 'PCSDSM(6270c2d6-d30a-41ec-8edb-519b950de71b)'
+  databaseName: 'MyDemo'
+  SqlUsername: 'server_admin'
+  SqlPassword: 'P@ssw0rd1!'
+  SqlFile: 'PCS_Workshop.sql'
 
 pool:
   vmImage: windows-latest
@@ -13,10 +21,10 @@ steps:
     inputs:
       azureSubscription: 'PCSDSM (6270c2d6-d30a-41ec-8edb-519b950de71b)'
       AuthenticationType: 'server'
-      ServerName: 'demoforpcs.database.windows.net'
-      DatabaseName: 'MyDemo'
-      SqlUsername: 'server_admin'
-      SqlPassword: 'P@ssw0rd1!'
+      ServerName: $(serverName)
+      DatabaseName: $(databaseName)
+      SqlUsername: $(SqlUsername)
+      SqlPassword: $(SqlPassword)
       deployType: 'SqlTask'
-      SqlFile: 'PCS_Workshop.sql'
+      SqlFile: $(SqlFile)
       IpDetectionMethod: 'AutoDetect'
